@@ -5,6 +5,22 @@
  */
 class MyTangram extends CGFobject {
 
+
+	enableNormalViz() {
+        this.diamond.enableNormalViz();
+        this.triangleSmall.enableNormalViz();
+        this.parallelogram.enableNormalViz();
+        this.triangle.enableNormalViz();
+        this.triangleBig.enableNormalViz();
+    }
+    disableNormalViz() {
+        this.diamond.disableNormalViz();
+        this.triangleSmall.disableNormalViz();
+        this.parallelogram.disableNormalViz();
+        this.triangle.disableNormalViz();
+        this.triangleBig.disableNormalViz();
+    }
+    
 	constructor(scene) {
 		super(scene);
 		this.initBuffers();
@@ -35,7 +51,7 @@ class MyTangram extends CGFobject {
 
       var mDiamondTrans = [1, 0, 0, 0,
                   0, 1, 0, 0,
-                  0, 0, 1, 0,
+                  0, 0, 0, 0,
                   Math.sqrt(2)/2, Math.sqrt(2)/2, 0, 1]
 
       this.scene.multMatrix(mDiamondTrans);

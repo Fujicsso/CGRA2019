@@ -23,7 +23,7 @@ class MyScene extends CGFscene {
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
-        this.quad = new MyQuad(this);
+        this.quadCube = new MyUnitCubeQuad(this);
         this.tangram = new MyTangram(this);
 
         //------ Applied Material
@@ -46,6 +46,7 @@ class MyScene extends CGFscene {
         this.displayAxis = true;
         this.displayQuad = true;
         this.displayQuadMaterial = true;
+        this.displayTangram = false;
         this.scaleFactor = 2;
         this.selectedTexture = -1;
         this.wrapS = 0;
@@ -91,7 +92,7 @@ class MyScene extends CGFscene {
 
     //Function that updates texture coordinates in MyQuad
     updateTexCoords() {
-        this.quad.updateTexCoords(this.texCoords);
+        this.quadCube.updateTexCoords(this.texCoords);
     }
 
     display() {
@@ -116,7 +117,8 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        this.tangram.display();
+        if (this.displayTangram)
+          this.tangram.display();
 
         if (this.displayQuadMaterial)
           this.quadMaterial.apply();
@@ -128,7 +130,7 @@ class MyScene extends CGFscene {
         // this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
 
         if (this.displayQuad)
-          this.quad.display();
+          this.quadCube.display();
 
 
 

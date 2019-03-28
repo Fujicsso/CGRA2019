@@ -26,7 +26,10 @@ class MyPrism extends CGFobject {
             var ca=Math.cos(ang);
             var caa=Math.cos(ang+alphaAng);
 
-            this.vertices.push(0,1,0);
+            var smed = Math.sin(ang+(alphaAng/2));
+            var cmed = Math.cos(ang+(alphaAng/2));
+
+            // this.vertices.push(0,1,0);
             this.vertices.push(ca, 0, -sa);
             this.vertices.push(caa, 0, -saa);
             this.vertices.push(ca, 1, -sa);
@@ -34,40 +37,23 @@ class MyPrism extends CGFobject {
 
             // triangle normal computed by cross product of two edges
             var normal= [
-                saa-sa,
-                ca*saa-sa*caa,
-                caa-ca
+                cmed,
+                0,
+                -smed
             ];
-
-            // normalization
-            var nsize=Math.sqrt(
-                normal[0]*normal[0]+
-                normal[1]*normal[1]+
-                normal[2]*normal[2]
-                );
-            normal[0]/=nsize;
-            normal[1]/=nsize;
-            normal[2]/=nsize;
 
             // push normal once for each vertex of this triangle
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
+            this.normals.push(...normal);
 
-            this.indices.push(3*i, (3*i+1) , (3*i+2) );
+            this.indices.push(4*i, (4*i+1) , (4*i+2), (4*i+3) , (4*i+2), (4*i+1));
 
             ang+=alphaAng;
         }
 
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
-    }
-
-    updateBuffers(complexity){
-        this.slices = 3 + Math.round(9 * complexity); //complexity varies 0-1, so slices varies 3-12
-
-        // reinitialize buffers
-        this.initBuffers();
-        this.initNormalVizBuffers();
     }
 }

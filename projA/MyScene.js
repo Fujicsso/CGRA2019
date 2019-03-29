@@ -23,9 +23,10 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.prism = new MyPrism(this, 6);
         this.cylind = new MyCylinder(this, 12);
-        this.tree = new MyTree(this, 3, 1, 4, 2, null, null);
+        this.treepatch = new MyTreeRowPatch(this);
 
         //Objects connected to MyInterface
+        this.scaleFactor = 0.5;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -59,12 +60,15 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
+        this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+
         // ---- BEGIN Primitive drawing section
 
         this.cylind.enableNormalViz();
         // this.prism.display();
         // this.cylind.display();
-        this.tree.display();
+        // this.tree.display();
+        this.treepatch.display();
 
         // ---- END Primitive drawing section
     }

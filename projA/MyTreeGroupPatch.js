@@ -1,9 +1,9 @@
 /**
- * MyTreeRowPatch
+ * MyTreeGroupPatch
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyTreeRowPatch extends CGFobject {
+class MyTreeGroupPatch extends CGFobject {
 
   constructor(scene){
     super(scene);
@@ -14,7 +14,7 @@ class MyTreeRowPatch extends CGFobject {
     this.distanceZ = [];
     this.rotationX = [];
     this.rotationZ = [];
-    for (var i = 0; i < 6; i++){
+    for (var i = 0; i < 9; i++){
       this.trees.push(new MyTree(this.scene, 2.5 + Math.random(), 0.75 + Math.random()/2, 3.5 + Math.random(), 1.5 + Math.random()/2, null, null));
       this.distanceX.push(Math.random());
       this.distanceZ.push(Math.random()*2 - 1);
@@ -35,15 +35,18 @@ class MyTreeRowPatch extends CGFobject {
 
   display(){
 
-    for (var i = 0; i < 6; i++){
-      this.scene.pushMatrix();
+    for (var i = 0; i < 3; i++){
+      for (var j = 0; j < 3; j++){
+        var index = i + j;
+        this.scene.pushMatrix();
 
-      this.scene.translate((i-2.5)*(4+this.distanceX[i]), 0, this.distanceZ[i]);
-      this.scene.rotate(Math.PI/24*this.rotationX[i], 1, 0, 0);
-      this.scene.rotate(Math.PI/24*this.rotationZ[i], 0, 0, 1);
-      this.trees[i].display();
+        this.scene.translate((i-1)*(5+this.distanceX[index]), 0, (j-1)*(5+this.distanceZ[index]));
+        this.scene.rotate(Math.PI/24*this.rotationX[index], 1, 0, 0);
+        this.scene.rotate(Math.PI/24*this.rotationZ[index], 0, 0, 1);
+        this.trees[index].display();
 
-      this.scene.popMatrix();
+        this.scene.popMatrix();
+      }
     }
   }
 }

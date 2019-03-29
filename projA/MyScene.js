@@ -23,7 +23,8 @@ class MyScene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.prism = new MyPrism(this, 6);
         this.cylind = new MyCylinder(this, 12);
-        this.treepatch = new MyTreeRowPatch(this);
+        this.treeRowPatch = new MyTreeRowPatch(this);
+        this.treeGroupPatch = new MyTreeGroupPatch(this);
 
         //Objects connected to MyInterface
         this.scaleFactor = 0.5;
@@ -68,7 +69,8 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cylind.display();
         // this.tree.display();
-        this.treepatch.display();
+        // this.treeRowPatch.display();
+        this.treeGroupPatch.display();
 
         // ---- END Primitive drawing section
     }

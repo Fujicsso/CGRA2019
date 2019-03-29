@@ -25,6 +25,7 @@ class MyScene extends CGFscene {
         this.cylind = new MyCylinder(this, 12);
         this.treeRowPatch = new MyTreeRowPatch(this);
         this.treeGroupPatch = new MyTreeGroupPatch(this);
+        this.hill = new MyVoxelHill(this, 6);
 
         //Objects connected to MyInterface
         this.scaleFactor = 0.5;
@@ -70,7 +71,8 @@ class MyScene extends CGFscene {
         // this.cylind.display();
         // this.tree.display();
         // this.treeRowPatch.display();
-        this.treeGroupPatch.display();
+        // this.treeGroupPatch.display();
+        this.hill.display();
 
         // ---- END Primitive drawing section
     }

@@ -18,11 +18,19 @@ class MyScene extends CGFscene {
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+        this.enableTextures(true);
 
         //Initialize scene objects
         this.axis = new CGFaxis(this);
+        this.prism = new MyPrism(this, 6);
+        this.cylind = new MyCylinder(this, 12);
+        this.treeRowPatch = new MyTreeRowPatch(this);
+        this.treeGroupPatch = new MyTreeGroupPatch(this);
+        this.hill = new MyVoxelHill(this, 4);
+        this.ground = new MyGround(this, 30, 30, 0);
 
         //Objects connected to MyInterface
+        this.scaleFactor = 0.5;
     }
     initLights() {
         this.lights[0].setPosition(15, 2, 5, 1);
@@ -56,8 +64,25 @@ class MyScene extends CGFscene {
         //Apply default appearance
         this.setDefaultAppearance();
 
+        this.scale(this.scaleFactor, this.scaleFactor, this.scaleFactor);
+
         // ---- BEGIN Primitive drawing section
 
+        this.cylind.enableNormalViz();
+        // this.prism.display();
+        // this.cylind.display();
+        // this.tree.display();
+        // this.treeRowPatch.display();
+        // this.treeGroupPatch.display();
+        // this.hill.display();
+
+        // this.pushMatrix();
+
+        // this.scale(50, 50, 1);
+
+        this.ground.display();
+
+        // this.popMatrix();
 
         // ---- END Primitive drawing section
     }

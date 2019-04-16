@@ -28,6 +28,7 @@ class MyScene extends CGFscene {
         this.treeGroupPatch = new MyTreeGroupPatch(this);
         this.hill = new MyVoxelHill(this, 4);
         this.ground = new MyGround(this, 30, 30, 0);
+        this.house = new MyHouse(this);
 
         //Objects connected to MyInterface
         this.scaleFactor = 0.5;
@@ -68,7 +69,7 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        this.cylind.enableNormalViz();
+        // this.cylind.enableNormalViz();
         // this.prism.display();
         // this.cylind.display();
         // this.tree.display();
@@ -80,7 +81,8 @@ class MyScene extends CGFscene {
 
         // this.scale(50, 50, 1);
 
-        this.ground.display();
+        // this.ground.display();
+        this.house.display();
 
         // this.popMatrix();
 

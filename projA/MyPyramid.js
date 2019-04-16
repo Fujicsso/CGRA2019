@@ -3,10 +3,9 @@
 * @constructor
 */
 class MyPyramid extends CGFobject {
-    constructor(scene, slices, stacks) {
+    constructor(scene, slices) {
         super(scene);
         this.slices = slices;
-        this.stacks = stacks;
         this.initBuffers();
     }
     initBuffers() {
@@ -16,6 +15,9 @@ class MyPyramid extends CGFobject {
 
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
+
+        this.vertices.push(0,0,0);
+        this.normals.push(0, -1, 0);
 
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
@@ -30,6 +32,7 @@ class MyPyramid extends CGFobject {
             this.vertices.push(0,1,0);
             this.vertices.push(ca, 0, -sa);
             this.vertices.push(caa, 0, -saa);
+            this.vertices.push(ca, 0, -sa);
 
             // triangle normal computed by cross product of two edges
             var normal= [
@@ -52,10 +55,16 @@ class MyPyramid extends CGFobject {
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
+            this.normals.push(0, -1, 0);
 
-            this.indices.push(3*i, (3*i+1) , (3*i+2) );
+            this.indices.push(4*i+1, (4*i+2) , (4*i+3) );
 
             ang+=alphaAng;
+        }
+
+        for(var i = 0; i < this.slices; i++){
+            var next = (i+1)%this.slices;
+            this.indices.push(4*next+4, 4*i+4 , 0);
         }
 
         this.primitiveType = this.scene.gl.TRIANGLES;

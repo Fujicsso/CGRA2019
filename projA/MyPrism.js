@@ -16,6 +16,10 @@ class MyPrism extends CGFobject {
         var ang = 0;
         var alphaAng = 2*Math.PI/this.slices;
 
+        this.vertices.push(0,0,0);
+        this.vertices.push(0,1,0);
+        this.normals.push(0, -1, 0, 0, 1, 0);
+
         for(var i = 0; i < this.slices; i++){
             // All vertices have to be declared for a given face
             // even if they are shared with others, as the normals
@@ -29,11 +33,12 @@ class MyPrism extends CGFobject {
             var smed = Math.sin(ang+(alphaAng/2));
             var cmed = Math.cos(ang+(alphaAng/2));
 
-            // this.vertices.push(0,1,0);
             this.vertices.push(ca, 0, -sa);
             this.vertices.push(caa, 0, -saa);
             this.vertices.push(ca, 1, -sa);
             this.vertices.push(caa, 1, -saa);
+            this.vertices.push(ca, 0, -sa);
+            this.vertices.push(ca, 1, -sa);          
 
             // triangle normal computed by cross product of two edges
             var normal= [
@@ -47,12 +52,19 @@ class MyPrism extends CGFobject {
             this.normals.push(...normal);
             this.normals.push(...normal);
             this.normals.push(...normal);
-
-            this.indices.push(4*i, (4*i+1) , (4*i+2), (4*i+3) , (4*i+2), (4*i+1));
-
+            this.normals.push(0, -1, 0);
+            this.normals.push(0, 1, 0);
+          
+            this.indices.push(6*i+2, 6*i+1+2 , 6*i+2+2, 6*i+3+2 , 6*i+2+2, 6*i+1+2);
+            
             ang+=alphaAng;
         }
 
+        for(var i = 0; i < this.slices; i++){
+            var next = (i+1)%this.slices;
+            this.indices.push(6*next+6, 6*i+6 , 0, 6*i+7 , 6*next+7, 1);
+        }
+        
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }

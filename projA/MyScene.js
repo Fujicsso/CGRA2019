@@ -30,6 +30,7 @@ class MyScene extends CGFscene {
         this.ground = new MyGround(this, 30, 30, 0);
         this.house = new MyHouse(this);
         this.map = new MyCubeMap(this);
+        this.lantern = new MyLantern(this);
 
         //Objects connected to MyInterface
         this.scaleFactor = 0.5;
@@ -70,11 +71,9 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        // this.cylind.enableNormalViz();
         // this.prism.display();
         // this.cylind.display();
-        // this.tree.display();
-        this.treeRowPatch.display();
+        // this.treeRowPatch.display();
         // this.treeGroupPatch.display();
         // this.hill.display();
 
@@ -82,9 +81,10 @@ class MyScene extends CGFscene {
 
         // this.scale(50, 50, 1);
 
-        this.ground.display();
-        // this.house.display();
-        this.map.display();
+        // this.ground.display();
+        this.house.display();
+        // this.map.display();
+        this.lantern.display();
 
         // this.treeGroupPatch.display();
 

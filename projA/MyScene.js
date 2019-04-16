@@ -74,7 +74,7 @@ class MyScene extends CGFscene {
         // this.prism.display();
         // this.cylind.display();
         // this.tree.display();
-        // this.treeRowPatch.display();
+        this.treeRowPatch.display();
         // this.treeGroupPatch.display();
         // this.hill.display();
 
@@ -83,8 +83,10 @@ class MyScene extends CGFscene {
         // this.scale(50, 50, 1);
 
         this.ground.display();
-        this.house.display();
+        // this.house.display();
         this.map.display();
+
+        // this.treeGroupPatch.display();
 
         // this.popMatrix();
 

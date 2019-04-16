@@ -35,6 +35,9 @@ class MyTree extends CGFobject {
     this.scene.pushMatrix();
 
     this.scene.scale(this.trunkRadius, this.trunkHeight, this.trunkRadius);
+
+    if (this.trunkTexture != undefined)
+      this.trunkTexture.apply();
     this.cylinder.display();
 
     this.scene.popMatrix();
@@ -44,6 +47,9 @@ class MyTree extends CGFobject {
 
     this.scene.translate(0, this.trunkHeight, 0);
     this.scene.scale(this.treeTopRadius, this.treeTopHeight, this.treeTopRadius);
+
+    if (this.treeTopTexture != undefined)
+      this.treeTopTexture.apply();
     this.cone.display();
 
     this.scene.popMatrix();

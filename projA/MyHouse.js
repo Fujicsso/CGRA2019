@@ -10,7 +10,7 @@ class MyHouse extends CGFobject {
         this.initBuffers();
         this.initMaterials();
         this.scene = scene;
-        this.cube = new MyUnitCubeQuad(scene);
+        this.cube = new MyUnitCubeQuad(scene, this.materialMarmor, this.materialMarmor, this.materialWood);
         this.prism = new MyPrism(scene, 3);
         this.pyramid = new MyPyramid(scene, 4);
         this.prismPent = new MyPrism(scene, 5);
@@ -28,21 +28,21 @@ class MyHouse extends CGFobject {
 
     initMaterials() {
 
-        this.materialBack = new CGFappearance(this.scene);
-        this.materialBack.setAmbient(10, 10, 10, 1);
-        this.materialBack.setDiffuse(0, 0, 0, 1);
-        // this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
-        // this.materialBack.setShininess(10.0);
-        this.materialBack.loadTexture('images/hills_bk.png');
-        this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
+        this.materialWood = new CGFappearance(this.scene);
+        this.materialWood.setAmbient(10, 10, 10, 1);
+        this.materialWood.setDiffuse(0, 0, 0, 1);
+        // this.materialWood.setSpecular(0.1, 0.1, 0.1, 1);
+        // this.materialWood.setShininess(10.0);
+        this.materialWood.loadTexture('images/WoodPlanksOld.jpg');
+        this.materialWood.setTextureWrap('REPEAT', 'REPEAT');
     
-        this.materialTop = new CGFappearance(this.scene);
-        this.materialTop.setAmbient(10, 10, 10, 1);
-        // this.materialTop.setDiffuse(0.9, 0.9, 0.9, 1);
-        // this.materialTop.setSpecular(0.1, 0.1, 0.1, 1);
-        this.materialTop.setShininess(10.0);
-        this.materialTop.loadTexture('images/hills_up.png');
-        this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
+        this.materialMarmor = new CGFappearance(this.scene);
+        this.materialMarmor.setAmbient(10, 10, 10, 1);
+        // this.materialMarmor.setDiffuse(0.9, 0.9, 0.9, 1);
+        // this.materialMarmor.setSpecular(0.1, 0.1, 0.1, 1);
+        this.materialMarmor.setShininess(10.0);
+        this.materialMarmor.loadTexture('images/Marmor.jpg');
+        this.materialMarmor.setTextureWrap('REPEAT', 'REPEAT');
     
         this.materialBot = new CGFappearance(this.scene);
         this.materialBot.setAmbient(10, 10, 10, 1);

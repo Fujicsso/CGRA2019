@@ -5,10 +5,12 @@
  */
 class MyUnitCubeQuad extends CGFobject {
 
-	constructor(scene) {
+	constructor(scene, textTop, textBot, textSide) {
 		super(scene);
 		this.scene = scene;
-
+    this.textTop = textTop;
+    this.textBot = textBot;
+    this.textSide = textSide;
     this.quad = new MyQuad(this.scene);
     this.initMaterials();
 	}
@@ -42,7 +44,10 @@ class MyUnitCubeQuad extends CGFobject {
   display(){
 
     //Top
-    this.materialTop.apply();
+    if (this.textTop == undefined)
+      this.materialTop.apply();
+    else 
+      this.textTop.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();
     this.scene.translate(0, 0, 0.5);
@@ -50,7 +55,10 @@ class MyUnitCubeQuad extends CGFobject {
     this.scene.popMatrix();
 
     //Sides
-    this.materialSide.apply();
+    if (this.textSide == undefined)
+      this.materialSide.apply();
+    else 
+      this.textSide.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();
     this.scene.translate(0, -0.5, 0);
@@ -80,7 +88,11 @@ class MyUnitCubeQuad extends CGFobject {
     this.scene.popMatrix();
 
     //Bot
-    this.materialBot.apply();
+    
+    if (this.textBot == undefined)
+      this.materialBot.apply();
+    else 
+      this.textBot.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();
     this.scene.rotate(Math.PI, 1, 0, 0);

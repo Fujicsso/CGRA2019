@@ -54,6 +54,13 @@ class MyPrism extends CGFobject {
             this.normals.push(...normal);
             this.normals.push(0, -1, 0);
             this.normals.push(0, 1, 0);
+
+            this.texCoords = [
+                0, 1,
+                1, 1,
+                0, 0,
+                1, 0
+            ]
           
             this.indices.push(6*i+2, 6*i+1+2 , 6*i+2+2, 6*i+3+2 , 6*i+2+2, 6*i+1+2);
             

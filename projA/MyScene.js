@@ -29,6 +29,7 @@ class MyScene extends CGFscene {
         this.hill = new MyVoxelHill(this, 4);
         this.ground = new MyGround(this, 30, 30, 0);
         this.house = new MyHouse(this);
+        this.map = new MyCubeMap(this);
 
         //Objects connected to MyInterface
         this.scaleFactor = 0.5;
@@ -81,8 +82,9 @@ class MyScene extends CGFscene {
 
         // this.scale(50, 50, 1);
 
-        // this.ground.display();
+        this.ground.display();
         this.house.display();
+        this.map.display();
 
         // this.popMatrix();
 

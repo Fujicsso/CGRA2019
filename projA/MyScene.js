@@ -28,6 +28,8 @@ class MyScene extends CGFscene {
         this.treeGroupPatch = new MyTreeGroupPatch(this);
         this.hill = new MyVoxelHill(this, 4);
         this.hill2 = new MyVoxelHill(this, 3);
+        this.hill3 = new MyVoxelHill(this, 5);
+        this.hill4 = new MyVoxelHill(this, 8);
         this.ground = new MyGround(this, 50, 50, 0);
         this.house = new MyHouse(this);
         this.mapDay = new MyCubeMap(this, false);
@@ -40,44 +42,42 @@ class MyScene extends CGFscene {
         this.show_textures = true;
 
         //Objects connected to MyInterface
-        this.scaleFactor = 0.5;
+        this.scaleFactor = 0.25;
     }
     initLights() {
 
         this.lights[0].setPosition(0, 30, 0, 1.0);
-        this.lights[0].setAmbient(0.8, 0.8, 0.8, 1);
+        this.lights[0].setAmbient(0.8, 0.75, 0.5, 1);
         this.lights[0].setDiffuse(1.0, 1.0, 1.0, 1.0);
         this.lights[0].setSpecular(1.0, 1.0, 1.0, 1.0);
         this.lights[0].setLinearAttenuation(0.001);
         this.lights[0].disable();
         this.lights[0].setVisible(true);
-        // this.lights[0].enable();
         this.lights[0].update();
         
 
         this.lights[1].setPosition(0, 30, 0, 1.0);
-        this.lights[1].setAmbient(0.2, 0.2, 0.2, 1);
-        this.lights[1].setDiffuse(0.8, 0.8, 0.8, 1.0);
-        this.lights[1].setSpecular(0.8, 0.8, 0.8, 1.0);
+        this.lights[1].setAmbient(0.2, 0.2, 0.6, 1);
+        this.lights[1].setDiffuse(0.2, 0.2, 0.6, 1.0);
+        this.lights[1].setSpecular(0.2, 0.2, 0.6, 1.0);
         this.lights[1].setLinearAttenuation(0.05);
         this.lights[1].disable();
         this.lights[1].setVisible(true);
-        // this.lights[1].enable();
         this.lights[1].update();
         
 
-        this.lights[2].setPosition(-4, 3.25, 6, 1.0);
-        this.lights[2].setAmbient(0.8, 0.8, 0.8, 1.0);
-        this.lights[2].setDiffuse(1.0, 1.0, 1.0, 1.0);
-        this.lights[2].setSpecular(1.0, 1.0, 1.0, 1.0);
-        this.lights[2].setLinearAttenuation(0.3);
+        // this.lights[2].setPosition(6, 4, -3, 1.0);
+        this.lights[2].setPosition(6, 3, -3, 1.0);
+        this.lights[2].setAmbient(0, 0, 0, 1);
+        this.lights[2].setDiffuse(1.0, 0.9, 0.8, 1.0);
+        this.lights[2].setSpecular(1.0, 0.7, 0.6, 1.0);
+        this.lights[2].setLinearAttenuation(0.15);
         this.lights[2].disable();
         this.lights[2].setVisible(true);
-        // this.lights[2].enable();
         this.lights[2].update();
     }
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(0, 15, 20), vec3.fromValues(0, 0, 0));
     }
     setDefaultAppearance() {
         this.setAmbient(0.2, 0.4, 0.8, 1.0);
@@ -132,7 +132,19 @@ class MyScene extends CGFscene {
         // ---- BEGIN Primitive drawing section
 
         this.pushMatrix();
-        this.translate(0, 0, 12);
+        this.translate(-11, 0, 11);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeRowPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(11, 0, 11);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeRowPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-13, 0, -21);
         this.scale(0.75, 0.75, 0.75);
         this.treeRowPatch.display();
         this.popMatrix();
@@ -140,7 +152,31 @@ class MyScene extends CGFscene {
 
 
         this.pushMatrix();
-        this.translate(-8, 0, -8);
+        this.translate(10, 0, 19);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeGroupPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-16, 0, 19);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeGroupPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(17, 0, -6);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeGroupPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(17, 0, -18);
+        this.scale(0.75, 0.75, 0.75);
+        this.treeGroupPatch.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(3, 0, -18);
         this.scale(0.75, 0.75, 0.75);
         this.treeGroupPatch.display();
         this.popMatrix();
@@ -148,32 +184,43 @@ class MyScene extends CGFscene {
 
 
         this.pushMatrix();
-        this.translate(8, 0, -8);
+        this.translate(20, 0, 18);
         this.hill.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(-3, 0, 18);
+        this.hill3.display();
         this.popMatrix();
 
         this.pushMatrix();
         this.translate(0, 0, -8);
         this.hill2.display();
         this.popMatrix();
-        
-        
-
-        // this.pushMatrix();
-
-        // this.scale(50, 50, 1);
-
-        this.ground.display();
-        this.house.display();        
 
         this.pushMatrix();
-        this.translate(-4, 5, 6);
-        this.lantern.display();
+        this.translate(-14, 0, -10);
+        this.hill4.display();
+        this.popMatrix();
+        
+        
+
+        this.ground.display();
+
+
+        this.pushMatrix();
+        this.translate(0,0,-7)
+        this.rotate(Math.PI/2, 0, 1, 0);
+        this.house.display(); 
         this.popMatrix();
 
-        // this.treeGroupPatch.display();
-
-        // this.popMatrix();
+        
+        this.pushMatrix();
+        this.translate(0,0,-7)
+        this.rotate(Math.PI/2, 0, 1, 0);
+        this.translate(-4, 5, 6);
+        this.lantern.display(); 
+        this.popMatrix();
 
         // ---- END Primitive drawing section
     }

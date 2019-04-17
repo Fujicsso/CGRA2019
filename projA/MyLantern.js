@@ -30,7 +30,7 @@ class MyLantern extends CGFobject {
         this.materialMetal.setAmbient(0.19225, 0.19225, 0.19225, 1);
         this.materialMetal.setDiffuse(0.50754, 0.50754, 0.50754, 1);
         this.materialMetal.setSpecular(0.8, 0.8, 0.8, 1);
-        this.materialMetal.setShininess(0.4);
+        this.materialMetal.setShininess(0.7);
         this.materialMetal.loadTexture('images/metal.png');
         this.materialMetal.setTextureWrap('REPEAT', 'REPEAT');
     

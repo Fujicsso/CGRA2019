@@ -30,18 +30,18 @@ class MyGround extends CGFobject {
 
     initMaterials() {
         this.materialGrass = new CGFappearance(this.scene);
-        this.materialGrass.setAmbient(1, 1, 1, 1);
-        this.materialGrass.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialGrass.setAmbient(0.2, 0.2, 0.2, 1);
+        this.materialGrass.setDiffuse(0.75, 0.75, 0.75, 1);
         this.materialGrass.setSpecular(0.01, 0.01, 0.01, 1);
-        this.materialGrass.setShininess(1);
+        this.materialGrass.setShininess(0.2);
         this.materialGrass.loadTexture('images/mineTop.png');
         this.materialGrass.setTextureWrap('REPEAT', 'REPEAT');
     
         this.materialGravel = new CGFappearance(this.scene);
-        this.materialGravel.setAmbient(1, 1, 1, 1);
-        this.materialGravel.setDiffuse(0.9, 0.9, 0.9, 1);
+        this.materialGravel.setAmbient(0.2, 0.2, 0.2, 1);
+        this.materialGravel.setDiffuse(0.75, 0.75, 0.75, 1);
         this.materialGravel.setSpecular(0.01, 0.01, 0.01, 1);
-        this.materialGravel.setShininess(1);
+        this.materialGravel.setShininess(0.2);
         this.materialGravel.loadTexture('images/Floor.jpg');
         this.materialGravel.setTextureWrap('REPEAT', 'REPEAT');
        }

@@ -31,7 +31,7 @@ class MyHouse extends CGFobject {
 
         this.materialWood = new CGFappearance(this.scene);
         this.materialWood.setAmbient(0.2, 0.2, 0.2, 1);
-        this.materialWood.setDiffuse(0.6, 0.6, 0.6, 1);
+        this.materialWood.setDiffuse(0.9, 0.9, 0.9, 1);
         this.materialWood.setSpecular(0, 0, 0, 1);
         this.materialWood.setShininess(0);
         this.materialWood.loadTexture('images/wood.png');

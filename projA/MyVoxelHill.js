@@ -25,6 +25,9 @@ class MyVoxelHill extends CGFobject {
 
   display(){
 
+    this.scene.pushMatrix();
+    this.scene.translate(0, -0.5, 0);
+
     for (var i = 0; i < this.level; i++){
       var delta = i;
       for (var x = -delta; x <= delta; x+= 1){
@@ -54,5 +57,7 @@ class MyVoxelHill extends CGFobject {
         this.scene.popMatrix();
       }
     }
+
+    this.scene.popMatrix();
   }
 }

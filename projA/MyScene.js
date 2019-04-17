@@ -27,9 +27,10 @@ class MyScene extends CGFscene {
         this.treeRowPatch = new MyTreeRowPatch(this);
         this.treeGroupPatch = new MyTreeGroupPatch(this);
         this.hill = new MyVoxelHill(this, 4);
+        this.hill2 = new MyVoxelHill(this, 3);
         this.ground = new MyGround(this, 30, 30, 0);
         this.house = new MyHouse(this);
-        this.map = new MyCubeMap(this);
+        this.map = new MyCubeMap(this, true);
         this.lantern = new MyLantern(this);
 
         //Objects connected to MyInterface
@@ -71,20 +72,34 @@ class MyScene extends CGFscene {
 
         // ---- BEGIN Primitive drawing section
 
-        // this.prism.display();
-        // this.cylind.display();
         // this.treeRowPatch.display();
         // this.treeGroupPatch.display();
-        // this.hill.display();
+
+
+        this.pushMatrix();
+        this.translate(8, 0, -8);
+        this.hill.display();
+        this.popMatrix();
+
+        this.pushMatrix();
+        this.translate(0, 0, -8);
+        this.hill2.display();
+        this.popMatrix();
+        
+        
 
         // this.pushMatrix();
 
         // this.scale(50, 50, 1);
 
-        // this.ground.display();
+        this.ground.display();
         this.house.display();
-        // this.map.display();
+        this.map.display();
+
+        this.pushMatrix();
+        this.translate(-4, 5, 6);
         this.lantern.display();
+        this.popMatrix();
 
         // this.treeGroupPatch.display();
 

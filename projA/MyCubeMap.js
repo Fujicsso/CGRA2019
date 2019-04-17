@@ -5,63 +5,114 @@
  */
 class MyCubeMap extends CGFobject {
 
-	constructor(scene) {
+	constructor(scene, night) {
 		super(scene);
 		this.scene = scene;
-
+    this.night = night;
     this.quad = new MyQuad(this.scene);
     this.initMaterials();
 	}
 
   initMaterials() {
 
-    this.materialBack = new CGFappearance(this.scene);
-    this.materialBack.setAmbient(10, 10, 10, 1);
-    this.materialBack.setDiffuse(0, 0, 0, 1);
-    // this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
-    // this.materialBack.setShininess(10.0);
-    this.materialBack.loadTexture('images/hills_bk.png');
-    this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
+    if (this.night != true){
+      this.materialBack = new CGFappearance(this.scene);
+      this.materialBack.setAmbient(10, 10, 10, 1);
+      this.materialBack.setDiffuse(0, 0, 0, 1);
+      // this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
+      // this.materialBack.setShininess(10.0);
+      this.materialBack.loadTexture('images/hills_bk.png');
+      this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
 
-    this.materialTop = new CGFappearance(this.scene);
-    this.materialTop.setAmbient(10, 10, 10, 1);
-    // this.materialTop.setDiffuse(0.9, 0.9, 0.9, 1);
-    // this.materialTop.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialTop.setShininess(10.0);
-    this.materialTop.loadTexture('images/hills_up.png');
-    this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
+      this.materialTop = new CGFappearance(this.scene);
+      this.materialTop.setAmbient(10, 10, 10, 1);
+      // this.materialTop.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialTop.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialTop.setShininess(10.0);
+      this.materialTop.loadTexture('images/hills_up.png');
+      this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
 
-    this.materialBot = new CGFappearance(this.scene);
-    this.materialBot.setAmbient(10, 10, 10, 1);
-    // this.materialBot.setDiffuse(0.9, 0.9, 0.9, 1);
-    // this.materialBot.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialBot.setShininess(10.0);
-    this.materialBot.loadTexture('images/hills_dn.png');
-    this.materialBot.setTextureWrap('REPEAT', 'REPEAT');
+      this.materialBot = new CGFappearance(this.scene);
+      this.materialBot.setAmbient(10, 10, 10, 1);
+      // this.materialBot.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialBot.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialBot.setShininess(10.0);
+      this.materialBot.loadTexture('images/hills_dn.png');
+      this.materialBot.setTextureWrap('REPEAT', 'REPEAT');
 
-    this.materialLeft = new CGFappearance(this.scene);
-    this.materialLeft.setAmbient(10, 10, 10, 1);
-    // this.materialLeft.setDiffuse(0.9, 0.9, 0.9, 1);
-    // this.materialLeft.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialLeft.setShininess(10.0);
-    this.materialLeft.loadTexture('images/hills_lf.png');
-    this.materialLeft.setTextureWrap('REPEAT', 'REPEAT');
+      this.materialLeft = new CGFappearance(this.scene);
+      this.materialLeft.setAmbient(10, 10, 10, 1);
+      // this.materialLeft.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialLeft.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialLeft.setShininess(10.0);
+      this.materialLeft.loadTexture('images/hills_lf.png');
+      this.materialLeft.setTextureWrap('REPEAT', 'REPEAT');
 
-    this.materialRight = new CGFappearance(this.scene);
-    this.materialRight.setAmbient(10, 10, 10, 1);
-    // this.materialRight.setDiffuse(0.9, 0.9, 0.9, 1);
-    // this.materialRight.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialRight.setShininess(10.0);
-    this.materialRight.loadTexture('images/hills_rt.png');
-    this.materialRight.setTextureWrap('REPEAT', 'REPEAT');
+      this.materialRight = new CGFappearance(this.scene);
+      this.materialRight.setAmbient(10, 10, 10, 1);
+      // this.materialRight.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialRight.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialRight.setShininess(10.0);
+      this.materialRight.loadTexture('images/hills_rt.png');
+      this.materialRight.setTextureWrap('REPEAT', 'REPEAT');
 
-    this.materialFront = new CGFappearance(this.scene);
-    this.materialFront.setAmbient(10, 10, 10, 1);
-    // this.materialFront.setDiffuse(0.9, 0.9, 0.9, 1);
-    // this.materialFront.setSpecular(0.1, 0.1, 0.1, 1);
-    this.materialFront.setShininess(10.0);
-    this.materialFront.loadTexture('images/hills_ft.png');
-    this.materialFront.setTextureWrap('REPEAT', 'REPEAT');
+      this.materialFront = new CGFappearance(this.scene);
+      this.materialFront.setAmbient(10, 10, 10, 1);
+      // this.materialFront.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialFront.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialFront.setShininess(10.0);
+      this.materialFront.loadTexture('images/hills_ft.png');
+      this.materialFront.setTextureWrap('REPEAT', 'REPEAT');
+    } else {
+      this.materialBack = new CGFappearance(this.scene);
+      this.materialBack.setAmbient(10, 10, 10, 1);
+      this.materialBack.setDiffuse(0, 0, 0, 1);
+      // this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
+      // this.materialBack.setShininess(10.0);
+      this.materialBack.loadTexture('images/snowy_bk.png');
+      this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
+
+      this.materialTop = new CGFappearance(this.scene);
+      this.materialTop.setAmbient(10, 10, 10, 1);
+      // this.materialTop.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialTop.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialTop.setShininess(10.0);
+      this.materialTop.loadTexture('images/snowy_up.png');
+      this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
+
+      this.materialBot = new CGFappearance(this.scene);
+      this.materialBot.setAmbient(10, 10, 10, 1);
+      // this.materialBot.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialBot.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialBot.setShininess(10.0);
+      this.materialBot.loadTexture('images/snowy_dn.png');
+      this.materialBot.setTextureWrap('REPEAT', 'REPEAT');
+
+      this.materialLeft = new CGFappearance(this.scene);
+      this.materialLeft.setAmbient(10, 10, 10, 1);
+      // this.materialLeft.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialLeft.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialLeft.setShininess(10.0);
+      this.materialLeft.loadTexture('images/snowy_lf.png');
+      this.materialLeft.setTextureWrap('REPEAT', 'REPEAT');
+
+      this.materialRight = new CGFappearance(this.scene);
+      this.materialRight.setAmbient(10, 10, 10, 1);
+      // this.materialRight.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialRight.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialRight.setShininess(10.0);
+      this.materialRight.loadTexture('images/snowy_rt.png');
+      this.materialRight.setTextureWrap('REPEAT', 'REPEAT');
+
+      this.materialFront = new CGFappearance(this.scene);
+      this.materialFront.setAmbient(10, 10, 10, 1);
+      // this.materialFront.setDiffuse(0.9, 0.9, 0.9, 1);
+      // this.materialFront.setSpecular(0.1, 0.1, 0.1, 1);
+      this.materialFront.setShininess(10.0);
+      this.materialFront.loadTexture('images/snowy_ft.png');
+      this.materialFront.setTextureWrap('REPEAT', 'REPEAT');
+    }
+    
    }
 
   display(){

@@ -31,8 +31,8 @@ class MyHouse extends CGFobject {
 
         this.materialWood = new CGFappearance(this.scene);
         this.materialWood.setAmbient(0.2, 0.2, 0.2, 1);
-        this.materialWood.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialWood.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialWood.setDiffuse(0.6, 0.6, 0.6, 1);
+        this.materialWood.setSpecular(0, 0, 0, 1);
         this.materialWood.setShininess(0);
         this.materialWood.loadTexture('images/wood.png');
         this.materialWood.setTextureWrap('REPEAT', 'REPEAT');
@@ -48,7 +48,7 @@ class MyHouse extends CGFobject {
         this.materialRoof = new CGFappearance(this.scene);
         this.materialRoof.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialRoof.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialRoof.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialRoof.setSpecular(0, 0, 0, 1);
         this.materialRoof.setShininess(0);
         this.materialRoof.loadTexture('images/roof.png');
         this.materialRoof.setTextureWrap('REPEAT', 'REPEAT');
@@ -56,7 +56,7 @@ class MyHouse extends CGFobject {
         this.materialRoofSide = new CGFappearance(this.scene);
         this.materialRoofSide.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialRoofSide.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialRoofSide.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialRoofSide.setSpecular(0, 0, 0, 1);
         this.materialRoofSide.setShininess(0);
         this.materialRoofSide.loadTexture('images/roof_side.png');
         this.materialRoofSide.setTextureWrap('REPEAT', 'REPEAT');
@@ -64,7 +64,7 @@ class MyHouse extends CGFobject {
         this.materialRoofSmall = new CGFappearance(this.scene);
         this.materialRoofSmall.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialRoofSmall.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialRoofSmall.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialRoofSmall.setSpecular(0, 0, 0, 1);
         this.materialRoofSmall.setShininess(0);
         this.materialRoofSmall.loadTexture('images/roof_small.png');
         this.materialRoofSmall.setTextureWrap('REPEAT', 'REPEAT');
@@ -72,7 +72,7 @@ class MyHouse extends CGFobject {
         this.materialRoofBig = new CGFappearance(this.scene);
         this.materialRoofBig.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialRoofBig.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialRoofBig.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialRoofBig.setSpecular(0, 0, 0, 1);
         this.materialRoofBig.setShininess(0);
         this.materialRoofBig.loadTexture('images/roof_big.png');
         this.materialRoofBig.setTextureWrap('REPEAT', 'REPEAT');
@@ -80,7 +80,7 @@ class MyHouse extends CGFobject {
         this.materialBricks = new CGFappearance(this.scene);
         this.materialBricks.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialBricks.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialBricks.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialBricks.setSpecular(0, 0, 0, 1);
         this.materialBricks.setShininess(0);
         this.materialBricks.loadTexture('images/bricks.png');
         this.materialBricks.setTextureWrap('REPEAT', 'REPEAT');
@@ -88,7 +88,7 @@ class MyHouse extends CGFobject {
         this.materialBricksDoor = new CGFappearance(this.scene);
         this.materialBricksDoor.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialBricksDoor.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialBricksDoor.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialBricksDoor.setSpecular(0, 0, 0, 1);
         this.materialBricksDoor.setShininess(0);
         this.materialBricksDoor.loadTexture('images/bricks_door.png');
         this.materialBricksDoor.setTextureWrap('REPEAT', 'REPEAT');
@@ -96,7 +96,7 @@ class MyHouse extends CGFobject {
         this.materialBricksWindow = new CGFappearance(this.scene);
         this.materialBricksWindow.setAmbient(0.2, 0.2, 0.2, 1);
         this.materialBricksWindow.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialBricksWindow.setSpecular(0.05, 0.05, 0.05, 1);
+        this.materialBricksWindow.setSpecular(0, 0, 0, 1);
         this.materialBricksWindow.setShininess(0);
         this.materialBricksWindow.loadTexture('images/bricks_window.png');
         this.materialBricksWindow.setTextureWrap('REPEAT', 'REPEAT');

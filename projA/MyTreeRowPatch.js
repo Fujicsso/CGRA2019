@@ -37,18 +37,18 @@ class MyTreeRowPatch extends CGFobject {
   initMaterials() {
 
     this.materialTop = new CGFappearance(this.scene);
-    this.materialTop.setAmbient(10, 10, 10, 1);
-    this.materialTop.setDiffuse(0, 0, 0, 1);
-    // this.materialWood.setSpecular(0.1, 0.1, 0.1, 1);
-    // this.materialWood.setShininess(10.0);
+    this.materialTop.setAmbient(0.2, 0.2, 0.2, 1);
+    this.materialTop.setDiffuse(0.6, 0.6, 0.6, 1);
+    this.materialTop.setSpecular(0, 0, 0, 1);
+    this.materialTop.setShininess(0);
     this.materialTop.loadTexture('images/TreeTop.jpg');
     this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
 
     this.materialTrunk = new CGFappearance(this.scene);
-    this.materialTrunk.setAmbient(10, 10, 10, 1);
-    this.materialTrunk.setDiffuse(0, 0, 0, 1);
-    // this.materialWood.setSpecular(0.1, 0.1, 0.1, 1);
-    // this.materialWood.setShininess(10.0);
+    this.materialTrunk.setAmbient(0.2, 0.2, 0.2, 1);
+    this.materialTrunk.setDiffuse(0.6, 0.6, 0.6, 1);
+    this.materialTrunk.setSpecular(0, 0, 0, 1);
+    this.materialTrunk.setShininess(0);
     this.materialTrunk.loadTexture('images/TreeTrunk.jpg');
     this.materialTrunk.setTextureWrap('REPEAT', 'REPEAT');
 

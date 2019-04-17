@@ -18,6 +18,8 @@ class MyInterface extends CGFinterface {
 
         //Slider element in GUI
         this.gui.add(this.scene, 'scaleFactor', 0.1, 5).name('Scale Factor');
+        this.gui.add(this.scene, 'time_day', this.scene.times).name('Time of day');
+        this.gui.add(this.scene, 'show_textures').name('Show textures');
 
         return true;
     }

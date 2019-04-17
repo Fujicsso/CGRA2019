@@ -57,9 +57,9 @@ class MyScene extends CGFscene {
         
 
         this.lights[1].setPosition(0, 30, 0, 1.0);
-        this.lights[1].setAmbient(0.2, 0.2, 0.6, 1);
-        this.lights[1].setDiffuse(0.2, 0.2, 0.6, 1.0);
-        this.lights[1].setSpecular(0.2, 0.2, 0.6, 1.0);
+        this.lights[1].setAmbient(0.2, 0.2, 0.5, 1);
+        this.lights[1].setDiffuse(0.8, 0.8, 0.8, 1.0);
+        this.lights[1].setSpecular(0.8, 0.8, 0.8, 1.0);
         this.lights[1].setLinearAttenuation(0.05);
         this.lights[1].disable();
         this.lights[1].setVisible(true);
@@ -71,7 +71,7 @@ class MyScene extends CGFscene {
         this.lights[2].setAmbient(0, 0, 0, 1);
         this.lights[2].setDiffuse(1.0, 0.9, 0.8, 1.0);
         this.lights[2].setSpecular(1.0, 0.7, 0.6, 1.0);
-        this.lights[2].setLinearAttenuation(0.15);
+        this.lights[2].setLinearAttenuation(0.3);
         this.lights[2].disable();
         this.lights[2].setVisible(true);
         this.lights[2].update();
@@ -97,7 +97,7 @@ class MyScene extends CGFscene {
         this.applyViewMatrix();
 
         // Draw axis
-        this.axis.display();
+        // this.axis.display();
 
         //Apply default appearance
         this.setDefaultAppearance();

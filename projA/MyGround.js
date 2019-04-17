@@ -13,9 +13,9 @@ class MyGround extends CGFobject {
         this.scaleX = scaleX;
         this.scaleZ = scaleZ;
         this.posY = posY;
-        this.quadFront = new MyQuad(this.scene, scaleX/5, scaleZ/15);
+        this.quadFront = new MyQuad(this.scene, scaleX, scaleZ/3);
         this.quadMid = new MyQuad(this.scene, scaleX/5, scaleZ/30);
-        this.quadBack = new MyQuad(this.scene, scaleX/5, scaleZ/10);
+        this.quadBack = new MyQuad(this.scene, scaleX, scaleZ/2);
     }
 
     initBuffers() {
@@ -30,18 +30,18 @@ class MyGround extends CGFobject {
 
     initMaterials() {
         this.materialGrass = new CGFappearance(this.scene);
-        this.materialGrass.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialGrass.setAmbient(1, 1, 1, 1);
         this.materialGrass.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialGrass.setSpecular(0.1, 0.1, 0.1, 1);
-        this.materialGrass.setShininess(10.0);
-        this.materialGrass.loadTexture('images/Grass.jpg');
+        this.materialGrass.setSpecular(0.01, 0.01, 0.01, 1);
+        this.materialGrass.setShininess(1);
+        this.materialGrass.loadTexture('images/mineTop.png');
         this.materialGrass.setTextureWrap('REPEAT', 'REPEAT');
     
         this.materialGravel = new CGFappearance(this.scene);
-        this.materialGravel.setAmbient(0.1, 0.1, 0.1, 1);
+        this.materialGravel.setAmbient(1, 1, 1, 1);
         this.materialGravel.setDiffuse(0.9, 0.9, 0.9, 1);
-        this.materialGravel.setSpecular(0.1, 0.1, 0.1, 1);
-        this.materialGravel.setShininess(10.0);
+        this.materialGravel.setSpecular(0.01, 0.01, 0.01, 1);
+        this.materialGravel.setShininess(1);
         this.materialGravel.loadTexture('images/Floor.jpg');
         this.materialGravel.setTextureWrap('REPEAT', 'REPEAT');
        }

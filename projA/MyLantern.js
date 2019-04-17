@@ -26,13 +26,13 @@ class MyLantern extends CGFobject {
 
     initMaterials() {
 
-        this.materialWood = new CGFappearance(this.scene);
-        this.materialWood.setAmbient(10, 10, 10, 1);
-        this.materialWood.setDiffuse(0, 0, 0, 1);
-        // this.materialWood.setSpecular(0.1, 0.1, 0.1, 1);
-        // this.materialWood.setShininess(10.0);
-        this.materialWood.loadTexture('images/WoodPlanksOld.jpg');
-        this.materialWood.setTextureWrap('REPEAT', 'REPEAT');
+        this.materialMetal = new CGFappearance(this.scene);
+        this.materialMetal.setAmbient(1.5, 1.5, 1.5, 1);
+        this.materialMetal.setDiffuse(4, 4, 4, 1);
+        this.materialMetal.setSpecular(15, 15, 15, 1);
+        this.materialMetal.setShininess(10.0);
+        this.materialMetal.loadTexture('images/metal.png');
+        this.materialMetal.setTextureWrap('REPEAT', 'REPEAT');
     
         this.materialMarmor = new CGFappearance(this.scene);
         this.materialMarmor.setAmbient(10, 10, 10, 1);
@@ -49,6 +49,8 @@ class MyLantern extends CGFobject {
         this.scene.pushMatrix();
 
         this.scene.scale(0.125, 0.125, 0.125);
+
+        this.materialMetal.apply();
 
         this.scene.pushMatrix();   
         this.scene.translate(0, -3, 0);

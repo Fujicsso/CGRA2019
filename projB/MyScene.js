@@ -10,7 +10,6 @@ class MyScene extends CGFscene {
         super.init(application);
         this.initCameras();
         this.initLights();
-        this.initKeys();
 
         //Background color
         this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
@@ -29,6 +28,7 @@ class MyScene extends CGFscene {
 
         //Objects connected to MyInterface
         this.scaleFactor = 2;
+        this.speedFactor = this.bird.velocity;
         this.oldtime = 0;
         this.newtime = 0;
     }
@@ -56,7 +56,7 @@ class MyScene extends CGFscene {
             this.newtime = curtime;
         }
         
-        this.bird.update(this.newtime - this.oldtime);
+        this.bird.update(this.newtime, this.oldtime);
         this.checkKeys();
     }
 
@@ -93,17 +93,36 @@ class MyScene extends CGFscene {
         // ---- END Primitive drawing section
     }
 
-    ​checkKeys() {
+    checkKeys() {
         var text="Keys pressed: ";
         var keysPressed=false;
         // Check for key codes e.g. in ​https://keycode.info/ 
         if (this.gui.isKeyPressed("KeyW")) {
             text+=" W ";
             keysPressed=true;
+            this.bird.accelerate(0.1);
+            // this.speedFactor += 0.1;
         }
         if (this.gui.isKeyPressed("KeyS"))  {
-                text+=" S ";
-                keysPressed=true;
+            text+=" S ";
+            keysPressed=true;
+            this.bird.accelerate(-0.1);
+            // this.speedFactor -= 0.1;
+        }
+        if (this.gui.isKeyPressed("KeyA"))  {
+            text+=" A ";
+            keysPressed=true;
+            this.bird.turn(-Math.PI/16);
+        }
+        if (this.gui.isKeyPressed("KeyD"))  {
+            text+=" D ";
+            keysPressed=true;
+            this.bird.turn(Math.PI/16);
+        }
+        if (this.gui.isKeyPressed("KeyR"))  {
+            text+=" R ";
+            keysPressed=true;
+            this.bird.reset();
         }
         if (keysPressed)
             console.log(text);

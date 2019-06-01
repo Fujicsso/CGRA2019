@@ -5,7 +5,7 @@
  */
 class MyBird extends CGFobject {
 
-    constructor(scene) {
+    constructor(scene, branchs, nest) {
         super(scene);
         this.scene = scene;
         this.initBuffers();
@@ -15,13 +15,18 @@ class MyBird extends CGFobject {
         this.diamond = new MyDiamond(scene);
         this.triangle = new MyTriangle(scene);
         this.positionx = 0;
-        this.positiony = 3;
+        this.positiony = 12;
         this.positionz = 0;
         this.deltaY = 0;
         this.animationCycle = 0;
         this.velocity = 0.0;
         this.angle = 0.0;
         this.cycle = 0;
+        this.beginTimeDownMovement = 0;
+        this.downCycle = 0;
+        this.branchs = branchs;
+        this.nest = nest;
+        this.branch = null;
     }
 
     initBuffers() {
@@ -67,6 +72,38 @@ class MyBird extends CGFobject {
         this.deltaY = Math.sin(newtime/1000*Math.PI);
         this.cycle += (newtime-oldtime)/1000*Math.PI*this.velocity;
         this.animationCycle = Math.sin(this.cycle);
+
+        if (this.beginTimeDownMovement + 2000 < newtime)
+            this.downCycle = 0;
+        else 
+            this.downCycle = Math.sin(Math.PI/2*(newtime-this.beginTimeDownMovement)/1000)*-9;
+
+        if (this.branch != null) {
+            var dist = Math.sqrt(Math.pow(this.positionx - this.nest.x, 2) +
+                            Math.pow(this.positiony+this.downCycle - this.nest.y, 2) + 
+                            Math.pow(this.positionz - this.nest.z, 2));
+            if (dist < 3){
+                this.branch.y = 0.5;
+                var tmp = this.branch;
+                this.nest.branchs.push(tmp);
+                this.branch = null;
+            }
+        } else {
+            for (var i = 0; i < this.branchs.length; i++){
+                var dist = Math.sqrt(Math.pow(this.positionx - this.branchs[i].x, 2) +
+                            Math.pow(this.positiony+this.downCycle - this.branchs[i].y, 2) + 
+                            Math.pow(this.positionz - this.branchs[i].z, 2));
+
+                if (dist < 3){
+                    this.branch = this.branchs[i];
+                    this.branchs.splice(i, 1);
+                    this.branch.x = 0;
+                    this.branch.y = -1;
+                    this.branch.z = 0;
+                    break;
+                }
+            }
+        }
     }
 
     move(delta){
@@ -85,10 +122,15 @@ class MyBird extends CGFobject {
 
     reset(){
         this.positionx = 0;
-        this.positiony = 3;
+        this.positiony = 12;
         this.positionz = 0;
         this.velocity = 0;
         this.angle = 0;
+    }
+
+    beginDownMovement(time){
+        if (this.downCycle == 0)
+            this.beginTimeDownMovement = time;
     }
     
 
@@ -96,8 +138,11 @@ class MyBird extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.scene.translate(this.positionx, this.positiony+this.deltaY, this.positionz);
+        this.scene.translate(this.positionx, this.positiony+this.deltaY+this.downCycle, this.positionz);
         this.scene.rotate(-this.angle, 0, 1, 0);
+
+        if (this.branch != null)
+            this.branch.display();
 
         this.materialBlue.apply();
         this.cube.display();

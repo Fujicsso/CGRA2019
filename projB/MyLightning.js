@@ -7,10 +7,11 @@ class MyLightning extends MyLSystem {
 	constructor(scene) { 
         super(scene);
 
+        this.initMaterials();
         //Objects connected to MyInterface
         this.axiom = "X";
         this.ruleF = "FF";
-        this.ruleX = ["F[-X][X]F[-X]+FX", "F[-X]+F[-X][X]FX"]; 
+        this.ruleX = ["F[-X][X]F[-X]+FX"]; 
         this.angle = 25.0; 
         this.iterations = 3; 
         this.scaleFactor = 0.5;        
@@ -33,10 +34,27 @@ class MyLightning extends MyLSystem {
 
         // do initial generation
         this.doGenerate();
+
+        this.x = 0;
+        this.z = 0;
+        this.rotation = 0;
+    }
+
+    initMaterials() {
+
+        this.materialWhite = new CGFappearance(this.scene);
+        this.materialWhite.setAmbient(0.0, 0.0, 0.0, 1.0);
+        this.materialWhite.setDiffuse(0.87, 0.52, 0.77, 1.0);
+        this.materialWhite.setSpecular(0, 0, 0, 1);
+        this.materialWhite.setShininess(10.0);
+
     }
 
     startAnimation(t){
         this.timeStart = t;
+        this.x = Math.random()*30-15;
+        this.z = Math.random()*30-15;
+        this.rotation = Math.random()*2*Math.PI;
     }
 
     update(curtime){
@@ -50,6 +68,8 @@ class MyLightning extends MyLSystem {
     display(){
         this.scene.pushMatrix();
         this.scene.scale(this.scale, this.scale, this.scale);
+
+        this.materialWhite.apply();
 
         var i;
 

@@ -46,5 +46,12 @@ class MyScaledQuad extends CGFobject {
         this.quad.display();
         this.scene.popMatrix();
 
+        this.scene.pushMatrix();
+        this.scene.scale(this.scaleX, this.scaleY, 1);
+        this.scene.rotate(Math.PI, 0, 1, 0);
+        this.scene.translate(0, 0.5, 0);
+        this.quad.display();
+        this.scene.popMatrix();
+
     }
 }

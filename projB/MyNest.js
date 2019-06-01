@@ -5,12 +5,16 @@
  */
 class MyNest extends CGFobject {
 
-    constructor(scene) {
+    constructor(scene, x, y, z) {
         super(scene);
         this.initBuffers();
         this.initMaterials();
         this.scene = scene;
         this.cube = new MyUnitCubeQuad(scene);
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.branchs = [];
     }
 
     initBuffers() {
@@ -37,6 +41,15 @@ class MyNest extends CGFobject {
     
 
     display() {
+
+        this.materialWood.apply();
+
+        this.scene.pushMatrix();
+
+        this.scene.translate(this.x, this.y, this.z);
+
+        for (var i = 0; i < this.branchs.length; i++)
+            this.branchs[i].display();
 
         this.scene.pushMatrix();
         this.scene.scale(3, 0.5, 3);
@@ -68,6 +81,8 @@ class MyNest extends CGFobject {
         this.scene.rotate(Math.PI/2, 0, 1, 0);
         this.scene.scale(3, 0.5, 0.5);
         this.cube.display();
+        this.scene.popMatrix();
+
         this.scene.popMatrix();
 
     }

@@ -24,11 +24,10 @@ class MyScene extends CGFscene {
         //Initialize scene objects
         this.axis = new CGFaxis(this);
         // this.plane = new Plane(this, 32);
-        this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
 
         // this.treeBranch = new MyTreeBranch(this);
-        this.nest = new MyNest(this);
+        this.nest = new MyNest(this, 10, 2, -5);
 
         this.lightning = new MyLightning(this);
 
@@ -36,12 +35,16 @@ class MyScene extends CGFscene {
 
         this.map = new MyCubeMap(this, false);
 
+        this.plants = new MyTreeGroupPatch(this);
+
         this.branchs = [];
         this.branchs.push(new MyTreeBranch(this, 5, 2, 5, Math.PI/4));
         this.branchs.push(new MyTreeBranch(this, -7, 2, -9, -Math.PI/16));
         this.branchs.push(new MyTreeBranch(this, -13, 2, 2, Math.PI/2));
         this.branchs.push(new MyTreeBranch(this, 5, 2, -10, -Math.PI/8));
         this.branchs.push(new MyTreeBranch(this, -8, 2, 10, Math.PI/5));
+
+        this.bird = new MyBird(this, this.branchs, this.nest);
 
         //Objects connected to MyInterface
         this.scaleFactor = 2;
@@ -119,18 +122,35 @@ class MyScene extends CGFscene {
 
         // this.treeBranch.display();
 
-        // this.nest.display();
+        this.nest.display();
 
-        this.pushMatrix();
-        this.translate(0, 3, 0);
-        this.lightning.display();
-        this.popMatrix();
+        
 
         for (var i = 0; i < this.branchs.length; i++)
             this.branchs[i].display();
 
         this.map.display();
 
+
+        this.pushMatrix();
+        this.translate(10, 2, 7);     
+        this.plants.display();
+        this.popMatrix();
+        
+        this.pushMatrix();
+        this.translate(-11, 2, -5);     
+        this.plants.display();
+        this.popMatrix();
+
+
+
+        this.pushMatrix();
+        this.translate(this.lightning.x, 25, this.lightning.z);
+        this.rotate(this.lightning.rotation, 0, 1,0 );
+        this.scale(3, 3, 3);
+        this.rotate(Math.PI, 1, 0, 0);    
+        this.lightning.display();
+        this.popMatrix();
         
 
         
@@ -173,6 +193,12 @@ class MyScene extends CGFscene {
             keysPressed=true;
             this.lightning.startAnimation(this.newtime);
         }
+        if (this.gui.isKeyPressed("KeyP"))  {
+            text+=" P ";
+            keysPressed=true;
+            this.bird.beginDownMovement(this.newtime);
+        }
+        
         if (keysPressed)
             console.log(text);
     }

@@ -1,20 +1,18 @@
 /**
- * MyHouse
+ * MyScaledQuad
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyTreeBranch extends CGFobject {
+class MyScaledQuad extends CGFobject {
 
-    constructor(scene, x, y, z, angle) {
+    constructor(scene, scaleX, scaleY) {
         super(scene);
         this.initBuffers();
         this.initMaterials();
         this.scene = scene;
-        this.cyl = new MyCylinder(scene, 10);
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.angle = angle
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
+        this.quad = new MyQuad(scene);
     }
 
     initBuffers() {
@@ -43,19 +41,9 @@ class MyTreeBranch extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
-
-        this.scene.translate(this.x, this.y, this.z);
-        this.scene.rotate(this.angle, 0, 1, 0);
-
-        this.scene.pushMatrix();
-        this.scene.translate(0, 0.25, 0);
-        this.scene.rotate(Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 0, 0, 1);
-        this.scene.scale(0.25, 2, 0.25);
-        this.scene.translate(0, -0.5, 0);
-        this.cyl.display();
-        this.scene.popMatrix();
-
+        this.scene.scale(this.scaleX, this.scaleY, 1);
+        this.scene.translate(0, 0.5, 0);
+        this.quad.display();
         this.scene.popMatrix();
 
     }

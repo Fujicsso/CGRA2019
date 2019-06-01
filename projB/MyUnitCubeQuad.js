@@ -44,9 +44,7 @@ class MyUnitCubeQuad extends CGFobject {
   display(){
 
     //Top
-    if (this.textTop == undefined)
-      this.materialTop.apply();
-    else 
+    if (this.textTop != undefined)
       this.textTop.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();
@@ -55,9 +53,7 @@ class MyUnitCubeQuad extends CGFobject {
     this.scene.popMatrix();
 
     //Sides
-    if (this.textSide == undefined)
-      this.materialSide.apply();
-    else 
+    if (this.textSide != undefined)
       this.textSide.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();
@@ -89,9 +85,7 @@ class MyUnitCubeQuad extends CGFobject {
 
     //Bot
     
-    if (this.textBot == undefined)
-      this.materialBot.apply();
-    else 
+    if (this.textBot != undefined)
       this.textBot.apply();
     this.scene.gl.texParameteri(this.scene.gl.TEXTURE_2D, this.scene.gl.TEXTURE_MAG_FILTER, this.scene.gl.NEAREST);
     this.scene.pushMatrix();

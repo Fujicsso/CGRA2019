@@ -17,37 +17,37 @@ class MyCubeMap extends CGFobject {
 
     if (this.night != true){
       this.materialBack = new CGFappearance(this.scene);
-      this.materialBack.setAmbient(2, 2, 2, 1);
+      this.materialBack.setAmbient(5, 5, 5, 1);
       this.materialBack.loadTexture('images/hills_bk.png');
       this.materialBack.setTextureWrap('REPEAT', 'REPEAT');
 
       this.materialTop = new CGFappearance(this.scene);
-      this.materialTop.setAmbient(2, 2, 2, 1);
+      this.materialTop.setAmbient(5, 5, 5, 1);
       this.materialTop.loadTexture('images/hills_up.png');
       this.materialTop.setTextureWrap('REPEAT', 'REPEAT');
 
       this.materialBot = new CGFappearance(this.scene);
-      this.materialBot.setAmbient(2, 2, 2, 1);
+      this.materialBot.setAmbient(5, 5, 5, 1);
       this.materialBot.loadTexture('images/hills_dn.png');
       this.materialBot.setTextureWrap('REPEAT', 'REPEAT');
 
       this.materialLeft = new CGFappearance(this.scene);
-      this.materialLeft.setAmbient(2, 2, 2, 1);
+      this.materialLeft.setAmbient(5, 5, 5, 1);
       this.materialLeft.loadTexture('images/hills_lf.png');
       this.materialLeft.setTextureWrap('REPEAT', 'REPEAT');
 
       this.materialRight = new CGFappearance(this.scene);
-      this.materialRight.setAmbient(2, 2, 2, 1);
+      this.materialRight.setAmbient(5, 5, 5, 1);
       this.materialRight.loadTexture('images/hills_rt.png');
       this.materialRight.setTextureWrap('REPEAT', 'REPEAT');
 
       this.materialFront = new CGFappearance(this.scene);
-      this.materialFront.setAmbient(2, 2, 2, 1);
+      this.materialFront.setAmbient(5, 5, 5, 1);
       this.materialFront.loadTexture('images/hills_ft.png');
       this.materialFront.setTextureWrap('REPEAT', 'REPEAT');
     } else {
       this.materialBack = new CGFappearance(this.scene);
-      this.materialBack.setAmbient(2, 2, 2, 1);
+      this.materialBack.setAmbient(5, 5, 5, 1);
       // this.materialBack.setDiffuse(0, 0, 0, 1);
       // this.materialBack.setSpecular(0.1, 0.1, 0.1, 1);
       // this.materialBack.setShininess(10.0);
@@ -101,7 +101,7 @@ class MyCubeMap extends CGFobject {
 
     this.scene.pushMatrix();
 
-    this.scene.scale(50,50,50);
+    this.scene.scale(100,100,100);
 
     //Top
     this.materialRight.apply();

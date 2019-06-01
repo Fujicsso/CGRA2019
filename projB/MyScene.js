@@ -27,11 +27,25 @@ class MyScene extends CGFscene {
         this.bird = new MyBird(this);
         this.terrain = new MyTerrain(this);
 
-        this.treeBranch = new MyTreeBranch(this);
+        // this.treeBranch = new MyTreeBranch(this);
+        this.nest = new MyNest(this);
+
+        this.lightning = new MyLightning(this);
+
+        this.house = new MyHouse(this);
+
+        this.map = new MyCubeMap(this, false);
+
+        this.branchs = [];
+        this.branchs.push(new MyTreeBranch(this, 5, 2, 5, Math.PI/4));
+        this.branchs.push(new MyTreeBranch(this, -7, 2, -9, -Math.PI/16));
+        this.branchs.push(new MyTreeBranch(this, -13, 2, 2, Math.PI/2));
+        this.branchs.push(new MyTreeBranch(this, 5, 2, -10, -Math.PI/8));
+        this.branchs.push(new MyTreeBranch(this, -8, 2, 10, Math.PI/5));
 
         //Objects connected to MyInterface
         this.scaleFactor = 2;
-        this.speedFactor = this.bird.velocity;
+        this.speedFactor = 2;
         this.oldtime = 0;
         this.newtime = 0;
     }
@@ -60,6 +74,7 @@ class MyScene extends CGFscene {
         }
         
         this.bird.update(this.newtime, this.oldtime);
+        this.lightning.update(curtime);
         this.checkKeys();
     }
 
@@ -86,7 +101,6 @@ class MyScene extends CGFscene {
         this.pushMatrix();
         this.rotate(-0.5*Math.PI, 1, 0, 0);
         this.scale(60, 60, 1);
-        // this.plane.display();
         this.terrain.display();
         this.popMatrix();
 
@@ -94,7 +108,30 @@ class MyScene extends CGFscene {
         // this.translate(0, 3, 0);
         this.bird.display();
         // this.popMatrix();
-        this.treeBranch.display();
+        
+
+        this.pushMatrix();
+        this.translate(8, 2, 0);
+        this.scale(0.25, 0.25, 0.25);
+        this.house.display();
+        this.popMatrix();
+        
+
+        // this.treeBranch.display();
+
+        // this.nest.display();
+
+        this.pushMatrix();
+        this.translate(0, 3, 0);
+        this.lightning.display();
+        this.popMatrix();
+
+        for (var i = 0; i < this.branchs.length; i++)
+            this.branchs[i].display();
+
+        this.map.display();
+
+        
 
         
         // ---- END Primitive drawing section
@@ -107,29 +144,34 @@ class MyScene extends CGFscene {
         if (this.gui.isKeyPressed("KeyW")) {
             text+=" W ";
             keysPressed=true;
-            this.bird.accelerate(0.1);
+            this.bird.accelerate(0.1*this.speedFactor);
             // this.speedFactor += 0.1;
         }
         if (this.gui.isKeyPressed("KeyS"))  {
             text+=" S ";
             keysPressed=true;
-            this.bird.accelerate(-0.1);
+            this.bird.accelerate(-0.1*this.speedFactor);
             // this.speedFactor -= 0.1;
         }
         if (this.gui.isKeyPressed("KeyA"))  {
             text+=" A ";
             keysPressed=true;
-            this.bird.turn(-Math.PI/16);
+            this.bird.turn(-Math.PI/16*this.speedFactor);
         }
         if (this.gui.isKeyPressed("KeyD"))  {
             text+=" D ";
             keysPressed=true;
-            this.bird.turn(Math.PI/16);
+            this.bird.turn(Math.PI/16*this.speedFactor);
         }
         if (this.gui.isKeyPressed("KeyR"))  {
             text+=" R ";
             keysPressed=true;
             this.bird.reset();
+        }
+        if (this.gui.isKeyPressed("KeyL"))  {
+            text+=" L ";
+            keysPressed=true;
+            this.lightning.startAnimation(this.newtime);
         }
         if (keysPressed)
             console.log(text);

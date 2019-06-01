@@ -22,6 +22,5 @@ void main() {
 
 	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition+(offset*10.0), 1.0);
 
-	
 }
 

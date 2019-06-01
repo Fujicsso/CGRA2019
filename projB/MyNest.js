@@ -1,20 +1,16 @@
 /**
- * MyHouse
+ * MyNest 
  * @constructor
  * @param scene - Reference to MyScene object
  */
-class MyTreeBranch extends CGFobject {
+class MyNest extends CGFobject {
 
-    constructor(scene, x, y, z, angle) {
+    constructor(scene) {
         super(scene);
         this.initBuffers();
         this.initMaterials();
         this.scene = scene;
-        this.cyl = new MyCylinder(scene, 10);
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.angle = angle
+        this.cube = new MyUnitCubeQuad(scene);
     }
 
     initBuffers() {
@@ -43,19 +39,35 @@ class MyTreeBranch extends CGFobject {
     display() {
 
         this.scene.pushMatrix();
-
-        this.scene.translate(this.x, this.y, this.z);
-        this.scene.rotate(this.angle, 0, 1, 0);
-
-        this.scene.pushMatrix();
-        this.scene.translate(0, 0.25, 0);
-        this.scene.rotate(Math.PI/2, 0, 1, 0);
-        this.scene.rotate(Math.PI/2, 0, 0, 1);
-        this.scene.scale(0.25, 2, 0.25);
-        this.scene.translate(0, -0.5, 0);
-        this.cyl.display();
+        this.scene.scale(3, 0.5, 3);
+        this.scene.translate(0, 0.5, 0);
+        this.cube.display();
         this.scene.popMatrix();
 
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.75, 1.25);
+        this.scene.scale(3, 0.5, 0.5);
+        this.cube.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.75, -1.25);
+        this.scene.scale(3, 0.5, 0.5);
+        this.cube.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(1.25, 0.75, 0);
+        this.scene.rotate(Math.PI/2, 0, 1, 0);
+        this.scene.scale(3, 0.5, 0.5);
+        this.cube.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(-1.25, 0.75, 0);
+        this.scene.rotate(Math.PI/2, 0, 1, 0);
+        this.scene.scale(3, 0.5, 0.5);
+        this.cube.display();
         this.scene.popMatrix();
 
     }
